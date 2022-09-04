@@ -8,6 +8,8 @@ import DetailsPost from "./page/DetailsPost";
 import GlobalContext from "./context/GlobalContext";
 import UserList from "./page/UserList";
 import AddPost from "./page/AddPost";
+import Dashboard from "./page/Dashboard";
+import EditPost from "./page/EditPost";
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
         <Route exact path="/post/:id" element={<DetailsPost />} />
         <Route  path="/user" element={<UserList />} />
         <Route  path="/post/add" element={<AddPost />} />
+        <Route  path="/dashboard" element={<Dashboard />} />
+        <Route exact path="/post/edit/:id" element={<EditPost />} />
       </Routes>
     </GlobalContext>
     </BrowserRouter>

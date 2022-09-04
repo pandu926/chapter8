@@ -9,6 +9,7 @@ export const Input = (props) => {
     <input
     type={`${props.id}`}
     className="form-control"
+    value={`${props.value || ''}`}
     id={`${props.id}`}
     onChange={props.set}
     />

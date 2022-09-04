@@ -11,7 +11,7 @@ const Login = () => {
       'email': email,
       'password': password
     }
-    fetch('http://localhost:8000/auth/login',{
+    fetch('http://47.89.219.170:8000/auth/login',{
       method: 'POST',
       headers: {
         Accept: 'application/json',

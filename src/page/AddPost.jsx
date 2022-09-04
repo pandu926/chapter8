@@ -12,7 +12,7 @@ const AddPost = () => {
             'body': body,
             'image': image
         }
-        fetch('http://localhost:8000/post/create', {
+        fetch('http://47.89.219.170:8000/post/create', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -34,7 +34,7 @@ const AddPost = () => {
     <form onSubmit={createPost}>
     <Input id={"Title"} title={"Title"} set={(e) => setTitle(e.target.value)}/>
     <Input id={"body"} title={"body"} set={(e) => setBody(e.target.value)}/>
-    <Input id={"image"} title={"image"} set={(e) => setImage(e.target.value)}/>
+    <Input id={"gambar"} title={"image"} set={(e) => setImage(e.target.value)}/>
     <button type="submit" className="btn btn-primary">
         Login
     </button>

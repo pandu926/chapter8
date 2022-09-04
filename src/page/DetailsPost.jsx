@@ -7,7 +7,7 @@ const DetailsPost = () => {
     const {id} = useParams();
     const [state] = useGlobal();
     const data = state.post;
-    const [players] = data.filter((dt) => dt.id === id)
+    const [players] = data.filter((dt) => dt.id === Number(id))
     console.log(data, players);
     
   return (
@@ -24,11 +24,11 @@ const DetailsPost = () => {
             </thead>
             <thead>
                 <tr>
-                    {/* <th>{players.id}</th>
+                    <th>{players.id}</th>
                     <th>{players.user_id}</th>
                     <th>{players.title}</th>
                     <th>{players.body}</th>
-                    <th>{players.image}</th> */}
+                    <th>{players.image}</th>
                 </tr>
             </thead>
         </table>

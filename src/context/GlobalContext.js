@@ -9,7 +9,7 @@ const initialState = {
     accessToken: '',
 }
 
-export const Global = createContext({});
+export const Global = createContext(initialState);
 export function useGlobal(){
     return useContext(Global);
 }
@@ -19,6 +19,7 @@ export function useGlobal(){
 
 const GlobalContext = ({children}) => { 
     const [state , dispatch] = useReducer(AppReducer, initialState);
+
     useEffect(() => {
        fetchDataPost();
        fetchDataUser();
@@ -26,7 +27,7 @@ const GlobalContext = ({children}) => {
     }, []);
 
     const fetchDataPost = async() => {
-        const response = await fetch("http://localhost:8000/post");
+        const response = await fetch("http://47.89.219.170:8000/post");
         const data = await response.json();
         dispatch({
             type: "LIST_POST",
@@ -34,7 +35,7 @@ const GlobalContext = ({children}) => {
            });
     }
     const fetchDataUser = async() => {
-        const response = await fetch("http://localhost:8000/user");
+        const response = await fetch("http://47.89.219.170:8000/user");
         const data = await response.json();
         dispatch({
             type: "LIST_USER",

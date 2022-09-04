@@ -9,7 +9,7 @@ const Register = () => {
             'email': email,
             'password': password
         }
-        fetch('http://localhost:8000/user/register', {
+        fetch('http://47.89.219.170:8000/user/register', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
