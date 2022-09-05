@@ -1,32 +1,44 @@
 
 import React,{useState} from 'react';
 import { Input } from '../component/Input';
-import { useGlobal } from '../context/GlobalContext';
+
 import Button from '../component/Button';
+import { useNavigate } from 'react-router-dom';
+
 const AddPost = () => {
-  const [state] = useGlobal();
-  const token = state.accessToken;
+  const history = useNavigate();
+  const token = sessionStorage.getItem('accessToken');
 
   const createPost = (e) => {
     e.preventDefault();
-        const data = {
-            'title': title,
-            'body': body,
-            'image': image
-        }
+        let formData = new FormData();
+        formData.append("image", image);
+        formData.append("title", title);
+        formData.append("body", body);
         fetch('https://pencarikhuntul.lol/post/create', {
             method: 'POST',
             headers: {
-                Accept: 'application/json',
-                'Content-Type' : 'application/json',
+               
                 Authorization : `bearer ${token}`
             },
-            body: JSON.stringify(data),    
+            body: formData,    
         })
         .then(res => res.json())
-        .then(st => console.log(st))
+        .then((st) => {
+          if(st.body){
+            alert("sukses tambah postingan");
+            history("/dashboard");
+          }
+          else {
+            alert("gagal");
+          }
+        })
   }
 
+  const handleSave = (e)=> {
+    let upload = e.target.files[0];
+    setImage(upload);
+  }
   const [title, setTitle] = useState(''); 
   const [body, setBody] = useState(''); 
   const [image, setImage] = useState(''); 
@@ -36,7 +48,7 @@ const AddPost = () => {
     <form onSubmit={createPost}>
     <Input id={"Title"} title={"Title"} set={(e) => setTitle(e.target.value)}/>
     <Input id={"body"} title={"body"} set={(e) => setBody(e.target.value)}/>
-    <Input id={"gambar"} title={"image"} set={(e) => setImage(e.target.value)}/>
+    <Input id={"image"} type={"file"} title={"image"} set={handleSave}/>
     <Button type={"submit"} class={"btn btn-primary"} name={"submit"} />
 
     </form>

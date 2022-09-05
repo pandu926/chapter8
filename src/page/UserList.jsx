@@ -3,7 +3,7 @@ import { useGlobal } from '../context/GlobalContext'
 const UserList = () => {
     const [state] = useGlobal();
     const users = state.user;
-    console.log(users);
+    
   return (
     <div>
         <table className='table container'>

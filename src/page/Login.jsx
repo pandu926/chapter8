@@ -2,11 +2,9 @@
 import "../style/login.css"; 
 import {useState} from 'react';
 import {useNavigate} from 'react-router-dom'
-import { useGlobal } from '../context/GlobalContext';
 
 
 const Login = () => {
-  const [state ,dispatch] = useGlobal();
   const history = useNavigate();
   const loginSubmit = (e) => {
     e.preventDefault();
@@ -24,7 +22,7 @@ const Login = () => {
     })
     .then(res => res.json())
     .then((st)=> {
-      localStorage.setItem('accessToken', st.accessToken);
+      sessionStorage.setItem('accessToken', st.accessToken);
       if(st.errors){
         return alert('email/sandi salah');
       }

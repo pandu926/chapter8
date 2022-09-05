@@ -6,14 +6,15 @@ import Button from '../component/Button';
 const Dashboard = () => {
   const [state] = useGlobal();
   const data = state.post;
-  const token = localStorage.getItem('accesToken');
+  const token = sessionStorage.getItem('accessToken'); 
   const user = jwt_decode(token);
   const filterData = data.filter((dt)=> dt.user_id === Number(user.id));
   
   return (
     
-      <div>
-        <table className='table container'>
+      <div className='container mt-5'>
+        <Link to={'/post/add'}><Button name={"add post"} class={'btn btn-primary'}/></Link>
+        <table className='table'>
             <thead>
                 <tr>
                     
@@ -31,7 +32,6 @@ const Dashboard = () => {
                     <th>{data?.body}</th>
                     <th>{data?.image}</th>
                     <th>
-                      <Button  name={"delete"}/>
                       <Link to={`/post/edit/${data.id}`}><Button name={"Edit"} /></Link>
                     </th>
                 </tr>

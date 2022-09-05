@@ -1,0 +1,10 @@
+#notactive {
+    z-index: 1;
+    position: absolute;
+    margin-top: -1000px;
+}
+
+#active {
+    position: relative;
+    margin-top: 1px;
+}

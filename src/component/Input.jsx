@@ -7,9 +7,9 @@ export const Input = (props) => {
     {`${props.title}`}
     </label>
     <input
-    type={`${props.id}`}
+    type={`${props.type || 'text'}`}
     className="form-control"
-    value={`${props.value || ''}`}
+    // value={`${props.value || 'hapus'}`}
     id={`${props.id}`}
     onChange={props.set}
     />
