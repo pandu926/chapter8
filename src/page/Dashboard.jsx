@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import { useGlobal } from '../context/GlobalContext';
+import Button from '../component/Button';
 const Dashboard = () => {
   const [state] = useGlobal();
   const data = state.post;
@@ -26,12 +27,12 @@ const Dashboard = () => {
                 {filterData.map((data)=> (
                 <tr>
                     
-                    <th>{data.title}</th>
-                    <th>{data.body}</th>
-                    <th>{data.image}</th>
+                    <th>{data?.title}</th>
+                    <th>{data?.body}</th>
+                    <th>{data?.image}</th>
                     <th>
-                      <button>delete</button>
-                      <Link to={`/post/edit/${data.id}`}><button>edit</button></Link>
+                      <Button  name={"delete"}/>
+                      <Link to={`/post/edit/${data.id}`}><Button name={"Edit"} /></Link>
                     </th>
                 </tr>
                 ))}

@@ -1,17 +1,20 @@
-import React from 'react';
+
 import "../style/login.css"; 
 import {useState} from 'react';
+import {useNavigate} from 'react-router-dom'
 import { useGlobal } from '../context/GlobalContext';
+
 
 const Login = () => {
   const [state ,dispatch] = useGlobal();
+  const history = useNavigate();
   const loginSubmit = (e) => {
     e.preventDefault();
     const data = {
       'email': email,
       'password': password
     }
-    fetch('http://47.89.219.170:8000/auth/login',{
+    fetch('https://pencarikhuntul.lol/auth/login',{
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -20,12 +23,22 @@ const Login = () => {
       body: JSON.stringify(data)
     })
     .then(res => res.json())
-    .then(st => localStorage.setItem('accesToken', st.accessToken));
+    .then((st)=> {
+      localStorage.setItem('accessToken', st.accessToken);
+      if(st.errors){
+        return alert('email/sandi salah');
+      }
+      alert('login sukses');
+      history('/dashboard');
+      
+    })
+  
+
   }
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  console.log(state);
+  
   
   return (
     <div className="container mt-5">

@@ -14,9 +14,12 @@ const EditPost = () => {
     const [image, setImage] = useState(''); 
   return (
     <div className='container'>
-    <Input id={"Title"} title={"Title"} value={filterData.title}  set={(e) => setTitle(e.target.value)}/>
-    <Input id={"body"} title={"body"} value={filterData.body} set={(e) => setBody(e.target.value)}/>
-    <Input id={"gambar"} title={"image"} value={filterData.image} set={(e) => setImage(e.target.value)}/>
+      <form>
+    <Input id={"Title"} title={"Title"} value={filterData?.title}  set={(e) => setTitle(e.target.value)}/>
+    <Input id={"body"} title={"body"} value={filterData?.body} set={(e) => setBody(e.target.value)}/>
+    <Input id={"gambar"} title={"image"} value={filterData?.image} set={(e) => setImage(e.target.value)}/>
+    <button type='submit'> submit</button>
+    </form>
     </div>
   )
 }

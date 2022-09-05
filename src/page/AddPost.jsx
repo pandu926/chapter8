@@ -1,6 +1,8 @@
+
 import React,{useState} from 'react';
 import { Input } from '../component/Input';
 import { useGlobal } from '../context/GlobalContext';
+import Button from '../component/Button';
 const AddPost = () => {
   const [state] = useGlobal();
   const token = state.accessToken;
@@ -12,7 +14,7 @@ const AddPost = () => {
             'body': body,
             'image': image
         }
-        fetch('http://47.89.219.170:8000/post/create', {
+        fetch('https://pencarikhuntul.lol/post/create', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -35,9 +37,7 @@ const AddPost = () => {
     <Input id={"Title"} title={"Title"} set={(e) => setTitle(e.target.value)}/>
     <Input id={"body"} title={"body"} set={(e) => setBody(e.target.value)}/>
     <Input id={"gambar"} title={"image"} set={(e) => setImage(e.target.value)}/>
-    <button type="submit" className="btn btn-primary">
-        Login
-    </button>
+    <Button type={"submit"} class={"btn btn-primary"} name={"submit"} />
 
     </form>
 </div>

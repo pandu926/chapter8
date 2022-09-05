@@ -24,11 +24,11 @@ const DetailsPost = () => {
             </thead>
             <thead>
                 <tr>
-                    <th>{players.id}</th>
-                    <th>{players.user_id}</th>
-                    <th>{players.title}</th>
-                    <th>{players.body}</th>
-                    <th>{players.image}</th>
+                    <th>{players?.id}</th>
+                    <th>{players?.user_id}</th>
+                    <th>{players?.title}</th>
+                    <th>{players?.body}</th>
+                    <th>{players?.image}</th>
                 </tr>
             </thead>
         </table>

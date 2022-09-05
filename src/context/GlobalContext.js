@@ -27,7 +27,7 @@ const GlobalContext = ({children}) => {
     }, []);
 
     const fetchDataPost = async() => {
-        const response = await fetch("http://47.89.219.170:8000/post");
+        const response = await fetch("https://pencarikhuntul.lol/post");
         const data = await response.json();
         dispatch({
             type: "LIST_POST",
@@ -35,7 +35,7 @@ const GlobalContext = ({children}) => {
            });
     }
     const fetchDataUser = async() => {
-        const response = await fetch("http://47.89.219.170:8000/user");
+        const response = await fetch("https://pencarikhuntul.lol/user");
         const data = await response.json();
         dispatch({
             type: "LIST_USER",
